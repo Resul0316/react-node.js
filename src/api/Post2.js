@@ -24,7 +24,7 @@ const Post2 = () => {
     return (
         <div className="m-5">
             <h5>Post2 Study</h5>
-            <input 
+            <input
             type="text"
             placeholder="Enter Input"
             value={inputData}

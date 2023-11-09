@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react'
 
 const Apis = () => {
-    const [message, setMessage] = useState('')
-    const [books, setBooks] = useState([])
+    const [message, setMessage] = useState('');
+    const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(false);
     const [fetchCompleted, setFetchCompleted] = useState(false);
     const fetchData = async () => {
         const response = await fetch('/api/data');
         const data = await response.json()
         setBooks(data)
+        console.log(data)
     }
     useEffect(() => {
         if (fetchCompleted) {
         setLoading(true);
-        fetchData()
+        fetchData();
         setLoading(false);
         }
     }, [fetchCompleted])
@@ -41,10 +42,10 @@ const Apis = () => {
         <button onClick={handleClick}>Fetch Data</button>
         {loading ? (<p> Loading</p>) :
         (<ul>{books.map((book) => {
-            return <li key={book.id}>{book.key}</li>
+            return <li key={book.id}>{book.name}</li>
         })}</ul>)}
         <input type='text'></input>
-        {/* <button onClick={sendData}>Send Data</button> */}
+        <button onClick={sendData}>Send Data</button>
         </div>
     )
 }
