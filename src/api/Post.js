@@ -20,10 +20,9 @@ function Post() {
     }
     console.log(dataStore)
     return(
-        <div className="ms-5 me-5">
+        <div className="mt-5">
             <h4> Study React</h4>
             <input
-            className="m-5"
             type="text"
             placeholder="Enter Data"
             value={inputData}
