@@ -14,7 +14,7 @@ const Details = () => {
   console.log(data, 'data')
   const handleSendData = () => {
     axios.post('/api/input', {
-        body: ({userInput: inputData})
+        userInput: inputData
     })
     .then((res) => setPostData(res.data) )
     .catch((err) => console.info(err))
@@ -23,17 +23,6 @@ const Details = () => {
     <div className="mt-5 ms-2">
       <h6>Please Enter Your Details</h6>
       <div className="details">
-        {/* <Form onSubmit={handleSendData}>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="name@example.com" />
-          </Form.Group>
-          <InputGroup className="mb-3">
-            <InputGroup.Text>First and last name</InputGroup.Text>
-            <Form.Control aria-label="First name" />
-            <Form.Control aria-label="Last name" />
-          </InputGroup>
-        </Form> */}
         <input
           type="text"
           placeholder="Enter Data"

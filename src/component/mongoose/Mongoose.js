@@ -6,6 +6,10 @@ const Mongoose = () => {
   const [storeData, setStoreData] = useState([]);
   const [notes, setNotes] = useState([]);
   const trimValue = inputData.trim();
+  // pagination useState
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemPerPage] = useState(5);
+  // functions
   const handleClick = () => {
     if (trimValue !== "") {
       fetch("/api/notes", {
@@ -28,6 +32,14 @@ const Mongoose = () => {
     const response = await axios.get("/api/notes");
     setNotes(response.data);
   };
+  useEffect(() => {
+    getData()
+  }, [currentPage, itemPerPage])
+
+  // current items to show
+  const lastNote = currentPage * itemPerPage;
+  const firstNote = lastNote - itemPerPage;
+  const currentNotes = notes.slice(firstNote, lastNote)
 
   return (
     <div>
@@ -45,10 +57,13 @@ const Mongoose = () => {
         <div>
           <button className="mb-3 mt-4" onClick={getData}>Fetch Data</button>
           <ul>
-            {notes.map((note) => {
-              return <li key={note._id}>{note.userInput}</li>;
+            {currentNotes.map((note) => {
+              return <li key={note._id}>{note.text}</li>;
             })}
           </ul>
+          <h6>Pagination:</h6>
+          <button className="pagination-btn" onClick={() => setCurrentPage(currentPage -1)}>Prev</button>
+          <button className="pagination-btn" onClick={() => setCurrentPage(currentPage +1)}>Next</button>
         </div>
       </div>
     </div>
