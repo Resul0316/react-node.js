@@ -8,6 +8,9 @@ import Mongoose from "./component/mongoose/Mongoose.js";
 import Details from "./component/mongoose/UserDetails";
 import Cart from "./component/Cart";
 import { PersistGate } from "redux-persist/integration/react";
+import { Login } from "./component/mongoose/Login.js";
+import { Register } from "./component/mongoose/Register.js";
+import { Routing } from "./component/route/Routing.js";
 
 function App() {
   return (
@@ -17,7 +20,10 @@ function App() {
           {/* <Apis /> */}
           {/* <Post /> */}
           {/* <Post2/> */}
-          <Mongoose />
+          {/* <Mongoose /> */}
+          <Routing />
+          {/* <Register /> 
+          <Login /> */}
           {/* <Cart /> */}
           {/* <Details /> */}
         </div>
