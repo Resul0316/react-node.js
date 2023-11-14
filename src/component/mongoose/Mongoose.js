@@ -5,6 +5,7 @@ const Mongoose = () => {
   const [inputData, setInputData] = useState("");
   const [storeData, setStoreData] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [fetching, setIsFetching] = useState(false);
   const trimValue = inputData.trim();
   // pagination useState
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +32,7 @@ const Mongoose = () => {
   const getData = async () => {
     const response = await axios.get("/api/notes");
     setNotes(response.data);
+    setIsFetching(!fetching)
   };
   useEffect(() => {
     getData()
@@ -54,8 +56,8 @@ const Mongoose = () => {
           }}
         />
         <button onClick={handleClick}>Send Data</button>
-        <div>
-          <button className="mb-3 mt-4" onClick={getData}>Fetch Data</button>
+        <div className="mt-3">
+          {/* <button className="mb-3 mt-4" onClick={getData}>Fetch Data</button> */}
           <ul>
             {currentNotes.map((note) => {
               return <li key={note._id}>{note.text}</li>;

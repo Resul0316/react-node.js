@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
@@ -8,21 +8,23 @@ export const Register = () => {
   const [username, setUsername] = useState("");
 //   const [confirmPassword, setConfirmPassword] = useState("");
   const [registerInfo, setRegisterInfo] = useState([]);
+  const navigate = useNavigate();
   const handleRegister = async () => {
     const response = await axios.post("/register", {
       username,
       email,
       password,
     })
+    const data = response.data
     .then(setEmail(''))
     .then(setUsername(''))
     .then(setPassword(''))
     setRegisterInfo(response.data);
-    <Navigate to="/login" />
+    navigate("/login")
   };
   console.log(registerInfo, 'registerInfo')
   useEffect(() => {
-    <Navigate to="/login" />
+    // navigate("/login")
   }, [handleRegister])
   return (
     <div className="mt-5">

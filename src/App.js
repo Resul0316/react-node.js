@@ -11,6 +11,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Login } from "./component/mongoose/Login.js";
 import { Register } from "./component/mongoose/Register.js";
 import { Routing } from "./component/route/Routing.js";
+import Toastify from "./toast/Toastify.js";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           {/* <Post2/> */}
           {/* <Mongoose /> */}
           <Routing />
+          {/* <Toastify /> */}
           {/* <Register /> 
           <Login /> */}
           {/* <Cart /> */}
