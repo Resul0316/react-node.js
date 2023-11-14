@@ -26,6 +26,5 @@ export const cartReducer = (state = initialState, action) => {
 // USer Token
 export const userToken = (state = initialState, action) => {
     if (initialState.token !== null) {
-        this.cookieStore.set('token', initialState.token)
     }
 }
