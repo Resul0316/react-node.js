@@ -6,26 +6,30 @@ export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-//   const [confirmPassword, setConfirmPassword] = useState("");
+  //   const [confirmPassword, setConfirmPassword] = useState("");
   const [registerInfo, setRegisterInfo] = useState([]);
   const navigate = useNavigate();
+  // registeration
   const handleRegister = async () => {
-    const response = await axios.post("/register", {
-      username,
-      email,
-      password,
-    })
-    const data = response.data
-    .then(setEmail(''))
-    .then(setUsername(''))
-    .then(setPassword(''))
-    setRegisterInfo(response.data);
-    navigate("/login")
+    try {
+      const response = await axios.post("/register", {
+        username,
+        email,
+        password,
+      })
+        .then(setEmail(""))
+        .then(setUsername(""))
+        .then(setPassword(""));
+        setRegisterInfo(response.data);
+    } catch (err) {
+      console.log(err)
+    } finally {
+      navigate('/login')
+    }
   };
-  console.log(registerInfo, 'registerInfo')
-  useEffect(() => {
-    // navigate("/login")
-  }, [handleRegister])
+
+  console.log(registerInfo, "registerInfo");
+
   return (
     <div className="mt-5">
       <input

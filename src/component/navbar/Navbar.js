@@ -4,6 +4,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function MainNavbar() {
+  const handleLogout = () => {
+    localStorage.removeItem('userToken')
+  }
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -20,7 +23,7 @@ function MainNavbar() {
               </NavDropdown.Item>
               {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item> */}
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item onClick={handleLogout} href="/login">
                 Logout
               </NavDropdown.Item>
             </NavDropdown>
