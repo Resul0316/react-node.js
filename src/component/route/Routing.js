@@ -17,7 +17,7 @@ export const Routing = () => {
     <Router>
       <Navbar />
       <Routes>
-        {token !== undefined && token && <Route path="/home" element={<Mongoose />}></Route>}
+        {(token !== undefined && token) && <Route path="/home" element={<Mongoose />}></Route>}
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
       </Routes>

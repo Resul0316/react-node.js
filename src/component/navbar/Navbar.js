@@ -7,6 +7,7 @@ function MainNavbar() {
   const handleLogout = () => {
     localStorage.removeItem('userToken')
   }
+  const token = localStorage.getItem('userToken')
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -15,14 +16,12 @@ function MainNavbar() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="position-end">
             <Nav.Link href="/home">Home</Nav.Link>
-            {/* <Nav.Link href="#link">Link</Nav.Link> */}
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/register">Register</NavDropdown.Item>
-              <NavDropdown.Item href="/login">
+              <NavDropdown.Item className={`${token && 'd-none'}`} href="/register">Register</NavDropdown.Item>
+              <NavDropdown.Item className={`${token && 'd-none'}`} href="/login">
                 Login
               </NavDropdown.Item>
-              {/* <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item> */}
-              <NavDropdown.Divider />
+              <NavDropdown.Divider className={`${token && 'd-none'}`} />
               <NavDropdown.Item onClick={handleLogout} href="/login">
                 Logout
               </NavDropdown.Item>

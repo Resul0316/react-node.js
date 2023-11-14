@@ -16,6 +16,7 @@ export const Login = () => {
       if (response && !("errors" in response)) {
         const data = response.data;
         setUserInfo(data);
+        console.log(userInfo)
       }
         const { token } = response.data
         localStorage.setItem('userToken', token)
@@ -24,7 +25,6 @@ export const Login = () => {
       console.log("LoginError", err);
     }
   };
-  console.log(userInfo, "userInfo2");
 
   return (
     <div className="mt-5">

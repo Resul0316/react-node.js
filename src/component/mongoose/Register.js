@@ -17,9 +17,9 @@ export const Register = () => {
         email,
         password,
       })
-        .then(setEmail(""))
-        .then(setUsername(""))
-        .then(setPassword(""));
+        setEmail("")
+        setUsername("")
+        setPassword("")
         setRegisterInfo(response.data);
     } catch (err) {
       console.log(err)
