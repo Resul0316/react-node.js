@@ -12,23 +12,26 @@ export const Register = () => {
   // registeration
   const handleRegister = async () => {
     try {
-      const response = await axios.post("/register", {
-        username,
-        email,
-        password,
-      })
-        setEmail("")
-        setUsername("")
-        setPassword("")
-        setRegisterInfo(response.data);
+      if (password.length <= 5) {
+        alert("Please enter a longer password");
+      } else {
+        const response = await axios.post("/register", {
+          username,
+          email,
+          password,
+        });
+        if (response.status === 201) {
+          setEmail("");
+          setUsername("");
+          setPassword("");
+          setRegisterInfo(response.data);
+          navigate("/login");
+        }
+      }
     } catch (err) {
-      console.log(err)
-    } finally {
-      navigate('/login')
+      console.log(err);
     }
   };
-
-  console.log(registerInfo, "registerInfo");
 
   return (
     <div className="mt-5">

@@ -11,11 +11,11 @@ function MainNavbar() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/home">Welcome to my applìlication</Navbar.Brand>
+        <Navbar.Brand href="/home">Welcome to my React-Study</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="position-end">
-            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/home" className={`${!token && 'd-none'}`}>Home</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item className={`${token && 'd-none'}`} href="/register">Register</NavDropdown.Item>
               <NavDropdown.Item className={`${token && 'd-none'}`} href="/login">
