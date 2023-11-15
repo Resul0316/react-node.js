@@ -8,6 +8,7 @@ function MainNavbar() {
     localStorage.removeItem('userToken')
   }
   const token = localStorage.getItem('userToken')
+  const userEmail = localStorage.getItem('userEmail');
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -27,6 +28,11 @@ function MainNavbar() {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+        </Navbar.Collapse>
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            Signed as: { userEmail }
+          </Navbar.Text>
         </Navbar.Collapse>
       </Container>
     </Navbar>

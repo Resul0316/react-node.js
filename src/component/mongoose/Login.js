@@ -12,14 +12,13 @@ export const Login = () => {
   const handleLogin = async () => {
     try {
       const response = await axios.post("/login", { email, password });
-
       if (response && !("errors" in response)) {
         const data = response.data;
         setUserInfo(data);
-        console.log(userInfo)
       }
-        const { token } = response.data
+      const { token } = response.data
         localStorage.setItem('userToken', token)
+        localStorage.setItem('userEmail', email)
         navigate("/home");
     } catch (err) {
       console.log("LoginError", err);
