@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useSelector } from 'react-redux';
 
 const Mongoose = () => {
   const [inputData, setInputData] = useState("");
@@ -43,6 +44,8 @@ const Mongoose = () => {
   const firstNote = lastNote - itemPerPage;
   const currentNotes = notes.slice(firstNote, lastNote)
 
+  const settedUser = useSelector((state) => state)
+  console.log(settedUser, 'settedUser')
   return (
     <div>
       <div className="mt-5 ms-2">

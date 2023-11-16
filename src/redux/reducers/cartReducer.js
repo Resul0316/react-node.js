@@ -1,8 +1,7 @@
-import { ADD_ITEM, DELETE_ITEM, SET_USER_TOKEN } from "../actionTypes/actionTypes";
+import { ADD_ITEM, DELETE_ITEM } from "../actionTypes/actionTypes";
 
 const initialState = {
-    numOfItems: 0,
-    token:null
+    numOfItems: 0
 };
 // reducers are functions
 export const cartReducer = (state = initialState, action) => {
@@ -12,7 +11,6 @@ export const cartReducer = (state = initialState, action) => {
                 ...state,
                 numOfItems: state.numOfItems + 1
             };
-            break
         case DELETE_ITEM:
             return {
                 ...state,
@@ -20,11 +18,5 @@ export const cartReducer = (state = initialState, action) => {
             };
         default:
             return state;
-    }
-}
-
-// USer Token
-export const userToken = (state = initialState, action) => {
-    if (initialState.token !== null) {
     }
 }

@@ -29,9 +29,9 @@ function MainNavbar() {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed as: { userEmail }
+        <Navbar.Collapse className="justify-content-end" >
+          <Navbar.Text className={`${!token && 'd-none'}`}>
+            { userEmail }
           </Navbar.Text>
         </Navbar.Collapse>
       </Container>

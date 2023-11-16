@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { currentUser } from "../../redux/actions/User";
+// import { user } from "../../redux/reducers/User";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userInfo, setUserInfo] = useState([]);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -16,14 +20,16 @@ export const Login = () => {
         const data = response.data;
         setUserInfo(data);
       }
-      const { token } = response.data
-        localStorage.setItem('userToken', token)
-        localStorage.setItem('userEmail', email)
-        navigate("/home");
+      const { token } = response.data;
+      localStorage.setItem("userToken", token);
+      localStorage.setItem("userEmail", email);
+      navigate("/home");
     } catch (err) {
       console.log("LoginError", err);
     }
   };
+  console.log(currentUser(email), "currentUser(email)");
+  dispatch(currentUser(email));
 
   return (
     <div className="mt-5">
